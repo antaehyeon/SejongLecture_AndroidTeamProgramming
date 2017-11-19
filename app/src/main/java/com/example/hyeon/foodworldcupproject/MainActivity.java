@@ -1,5 +1,6 @@
 package com.example.hyeon.foodworldcupproject;
 
+import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +12,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Action Bar Hide
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        // set StatusBar
+        getWindow().setStatusBarColor(Color.parseColor("#e53935"));
+
+
+
 
     }
 }
