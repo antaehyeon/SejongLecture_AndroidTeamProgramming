@@ -13,3 +13,14 @@
   ~~~~
   src로 경로를 지정하는 대신 background 속성을 이용하면 됨
   ~~~~
+  * colorCode - webCode
+  ~~~~
+  Color.parseColor("color WEBCODE")
+  ex) Color.parseColor("#FFFFFF")
+  단, minSDK 21 이상
+  ~~~~
+  * [TableLayout](http://recipes4dev.tistory.com/138)
+  ~~~~
+  TableLayout - TableLow 구조를 가짐
+  TableLow(행) 태그 안에 추가되는 요소들의 갯수(열) 구조
+  ~~~~
