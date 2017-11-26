@@ -1,6 +1,8 @@
 package com.example.hyeon.foodworldcupproject;
 
 import android.graphics.Color;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout mainLayout;
 
     ImageButton myPageButton;
+
+    ImageView myPageimageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

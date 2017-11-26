@@ -52,3 +52,77 @@
 ```
 
 -	[엘리베이션과 그림자](http://davidhyk.github.io/google-design-ko/what-is-material/elevation-shadows.html#)
+
+-	슬라이드 애니메이션 (페이지)
+
+```
+res/anim/trans_left.xmln
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_decelerate_interpolator">
+    <translate
+        android:fromXDelta="-100%p"
+        android:toXDelta="0%p"
+        android:duration="500"
+        android:repeatCount="0"
+        android:fillAfter="true"
+        />
+</set>
+
+fromXDelta 는 출발지, toXDelta는 목적지
+0, 100의 값으로 넣어주면 된다 (오른쪽에서 나오게 할 수도 있음)
+
+java
+Animation 객체 2개
+이벤트 동작시킬 Button 1개
+슬라이드 애니메이션으로 띄울 LinearLayout 1개
+
+// 버튼 이벤트
+BUTTON.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isPageOpen) {
+                    mainLayout.startAnimation(translateRightAnim);
+                } else {
+                    mainLayout.setVisibility(View.VISIBLE);
+                    mainLayout.startAnimation(translateLeftAnim);
+                }
+            }
+        });
+
+// 애니메이션 객체 로딩
+translateLeftAnim = AnimationUtils.loadAnimation(this, R.anim.translate_left);
+translateRightAnim = AnimationUtils.loadAnimation(this, R.anim.translate_right);
+
+SlidingPageAnimationListener animListener = new SlidingPageAnimationListener();
+translateLeftAnim.setAnimationListener(animListener);
+translateRightAnim.setAnimationListener(animListener);
+
+// 슬라이딩 페이지 애니메이션 리스너 선언
+private class SlidingPageAnimationListener implements Animation.AnimationListener {
+        public void onAnimationEnd(Animation animation) {
+            if (isPageOpen) {
+                mainLayout.setVisibility(View.INVISIBLE);
+                isPageOpen = false;
+            } else {
+                isPageOpen = true;
+            }
+        }
+
+        public void onAnimationRepeat(Animation animation) {}
+        public void onAnimationStart(Animation animation) {}
+    }
+
+// XML
+루트 Layout은 FrameLayout으로 선언
+슬라이드로 띄울 Layout은 아래와같이 선언
+<LinearLayout
+    android:id="@+id/layout_myPage"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="left"
+    android:background="#FFFFFFFF"
+    android:visibility="gone">
+</LinearLayout>
+```
