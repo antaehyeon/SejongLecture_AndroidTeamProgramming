@@ -50,3 +50,5 @@
   android:elevation="dp"
   android:translationZ="1dp"
 ```
+
+-	[엘리베이션과 그림자](http://davidhyk.github.io/google-design-ko/what-is-material/elevation-shadows.html#)
